@@ -30,11 +30,11 @@ public class Main {
         }
 
         Scanner s = new Scanner(System.in);
-        int choice;
+        String choice;
         while (action) {
-            System.out.print("Please enter required action [1 - addBook; 2 - checkBook; 3 - showLibReport; 0 - exit]: ");
-            choice = s.nextInt();
-            if (choice == 1) {
+            System.out.print("Please enter required action ['a' - addBook; 'c' - checkBook; 's' - showLibReport; 'q' - exit]: ");
+            choice = s.next();
+            if (choice.equals("a")) {
                 System.out.print("Enter the book that available in th library: ");
                 String book = s.next();
                 System.out.print("Enter date [dd.mm.yyyy]: ");
@@ -43,22 +43,22 @@ public class Main {
                 } catch (ParseException e) {
                     System.out.println("Date is not valid");
                 }
-            }
-
-            else if (choice == 2) {
+            } else if (choice.equals("c")) {
                 System.out.print("Enter date to find book [dd.mm.yyyy]: ");
                 try {
                     System.out.println(lib.checkBook(s.next()));
                 } catch (ParseException e) {
                     System.out.println("Date is not valid");
                 }
-            }
-            else if (choice == 3) {
+            } else if (choice.equals("s")) {
                 lib.showLib();
-            }
-            else {
+            } else if (choice.equals("q")) {
                 action = false;
+            } else {
+                System.out.println(choice + " is not a valid choice! Please enter it again!");
             }
         }
+
+
     }
 }
